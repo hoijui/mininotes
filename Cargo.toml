@@ -12,12 +12,12 @@ readme = "README.md"
 categories = ["command-line-interface", "command-line-utilities"]
 
 [dependencies]
-clap = { version = "4.0.29", features = ["derive"] }
-crossterm = "0.25.0"
-ropey = "1.5.0"
-unicode-segmentation = "1.10.0"
-unicode-width = "0.1.10"
+clap = { version = "4.4", features = ["derive"] }
+crossterm = "0.27"
+ropey = "1.6"
+unicode-segmentation = "1.10"
+unicode-width = "0.1"
 
 # bleh (These operating systems are supported by arboard)
 [target.'cfg(any(target_os = "windows", target_os = "macos", target_os = "linux", target_os = "freebsd", target_os = "dragonfly", target_os = "openbsd", target_os = "netbsd"))'.dependencies]
-arboard = { version = "3.2.0" }
+arboard = { version = "3.3" }
