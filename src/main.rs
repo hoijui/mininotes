@@ -24,6 +24,7 @@ use crossterm::{
 };
 
 // path saving
+use std::path::Path;
 use std::path::PathBuf;
 
 // arg parsing
@@ -34,7 +35,7 @@ pub fn update_and_render_to_buffer(
     editor: &mut TextEditor<TermLineLayoutSettings>,
     width: usize,
     height: usize,
-    filepath: &PathBuf,
+    filepath: &Path,
     relative_line_numbers: bool,
     event: UiEvent,
 ) -> TerminalBuffer {
@@ -214,7 +215,7 @@ fn terminal_main(
                         }
                     } else if code == KeyCode::Char('v') && modifiers == KeyModifiers::CONTROL {
                         // paste, if the clipboard is not empty
-                        if clip.len() > 0 {
+                        if !clip.is_empty() {
                             editor.insert_string_at_cursor(&clip);
                         }
                     } else if code == KeyCode::Char('x') && modifiers == KeyModifiers::CONTROL {
@@ -233,7 +234,7 @@ fn terminal_main(
                         // paste, if the clipboard is not empty
                         if let Some(x) = system_clip.as_mut() {
                             if let Ok(y) = x.get_text() {
-                                if y.len() > 0 {
+                                if !y.is_empty() {
                                     editor.insert_string_at_cursor(&y);
                                 }
                             }
