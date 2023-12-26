@@ -3,6 +3,7 @@
 use crate::unicode::{is_newline, move_grapheme};
 use ropey::{Rope, RopeSlice};
 use std::collections::VecDeque;
+use std::fmt::Display;
 use std::ops::Range;
 use unicode_width::UnicodeWidthChar;
 
@@ -76,6 +77,12 @@ pub struct TextEditor<L: LineLayout> {
     tab_width: usize,
 }
 
+impl<L: LineLayout> Display for TextEditor<L> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        self.text.fmt(f)
+    }
+}
+
 impl<L: LineLayout> TextEditor<L> {
     /// create a new editor from the given string and layout settings
     /// newly loaded means it's unsaved
@@ -114,11 +121,6 @@ impl<L: LineLayout> TextEditor<L> {
     /// get the tab width
     pub fn get_tab_width(&self) -> usize {
         self.tab_width
-    }
-
-    /// convert the contents of the editor to a string
-    pub fn to_string(&self) -> String {
-        self.text.to_string()
     }
 
     /// get the number of lines
