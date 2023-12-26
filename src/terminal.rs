@@ -1,17 +1,15 @@
 //! Terminal rendering
 
-use crate::unicode::{TERM_TAB_WIDTH, move_grapheme, string_width};
-use crate::editor::{LineLayout, GraphemePosition};
-use ropey::RopeSlice;
+use crate::editor::{GraphemePosition, LineLayout};
+use crate::unicode::{move_grapheme, string_width, TERM_TAB_WIDTH};
 use crossterm::{
     cursor::{self, CursorShape},
-    event::{
-        DisableMouseCapture, EnableMouseCapture, 
-    },
+    event::{DisableMouseCapture, EnableMouseCapture},
     execute, queue, style,
     style::Color,
-    terminal::{enable_raw_mode, disable_raw_mode, LeaveAlternateScreen, EnterAlternateScreen},
+    terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
 };
+use ropey::RopeSlice;
 use std::io::{stdout, Write};
 
 /// Layout settings, which there are none of
@@ -107,7 +105,7 @@ pub struct Char {
 }
 
 impl Char {
-	/// create a new char, as a text element
+    /// create a new char, as a text element
     pub fn new_text(c: char, selected: bool) -> Self {
         Self {
             c,
@@ -119,7 +117,7 @@ impl Char {
         }
     }
 
-	/// create a new char from the given color and highlight
+    /// create a new char from the given color and highlight
     pub fn new(c: char, color: Highlight) -> Self {
         Self { c, color }
     }

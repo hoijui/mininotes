@@ -1,10 +1,10 @@
 //! UI widget implementation
 
-use crate::widgets::*;
 use crate::editor::*;
-use crate::ui::*;
 use crate::terminal::*;
+use crate::ui::*;
 use crate::unicode::*;
+use crate::widgets::*;
 
 /// Enum representing an action in the UI
 /// For a larger program, it may make more sense to have a large program struct manage this, and let the actual widgets manage the state

@@ -17,9 +17,9 @@ pub struct LineNumbers {
 }
 
 impl LineNumbers {
-	/// create a new line numbers bar
-	/// bar starts at start, total is the total number of lines that can be displayed, 
-	/// relative for whether to display line numbers as relative. 
+    /// create a new line numbers bar
+    /// bar starts at start, total is the total number of lines that can be displayed,
+    /// relative for whether to display line numbers as relative.
     pub fn new(start: usize, total: usize, current: usize, relative: bool) -> Self {
         Self {
             start,
@@ -55,11 +55,11 @@ impl LineNumbers {
 /// Display a single line of text
 pub struct TextLine<'a> {
     /// string to display
-	pub string: &'a str,
+    pub string: &'a str,
 }
 
 impl<'a> TextLine<'a> {
-	/// Create a new display
+    /// Create a new display
     pub fn new(string: &'a str) -> Self {
         Self { string }
     }
